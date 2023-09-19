@@ -9,4 +9,12 @@ class Item
     @publish_date = publish_date
     @archived = archived
   end
+
+  def can_be_archived?
+    publish_date < (Date.today - (10 * 365))
+  end
+
+  def move_to_archive
+    self.archived = can_be_archived?
+  end
 end
