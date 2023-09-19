@@ -5,7 +5,6 @@ ALBUMS_FILE = 'albums.json'.freeze
 MOVIES_FILE = 'movies.json'.freeze
 GAMES_FILE = 'games.json'.freeze
 
-
 # def list_albums
 
 # end
