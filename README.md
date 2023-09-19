@@ -158,12 +158,12 @@ To run linter tests, run the following command:
 - LinkedIn: [Rodrigo Penayo](https://www.linkedin.com/in/rodrigo-penayo-391226158/)
 
 
-👤 **Sholotan Yusuf**
+👤 **Yusuf Sholotan**
 
 - GitHub: [yin-ka](https://github.com/yin-ka)
 - LinkedIn: [Yusuf Sholotan](https://www.linkedin.com/in/yusuf-sholotan/)
 
-👤 **Lala Aicha EL Vadel**
+👤 **Supreeti Kushwaha**
 
 - GitHub: [supreeti](https://github.com/supreeti)
 - LinkedIn: [Supreeti Kushwaha](https://www.linkedin.com/in/supreeti-kushwaha-23336232/)
