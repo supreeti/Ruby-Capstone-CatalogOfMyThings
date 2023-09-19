@@ -1,41 +1,41 @@
 require 'json'
 
-BOOKS_FILE = 'books.json'
-ALBUMS_FILE = 'albums.json'
-MOVIES_FILE = 'movies.json'
-GAMES_FILE = 'games.json'
+BOOKS_FILE = 'books.json'.freeze
+ALBUMS_FILE = 'albums.json'.freeze
+MOVIES_FILE = 'movies.json'.freeze
+GAMES_FILE = 'games.json'.freeze
 
 
 # def list_books
-  
+
 # end
 
 # def list_albums
-  
+
 # end
 
 # def list_movies
-  
+
 # end
 
 # def list_games
-  
+
 # end
 
 # def list_genres
-  
+
 # end
 
 # def list_labels
-  
+
 # end
 
 # def list_authors
-  
+
 # end
 
 # def list_sources
-  
+
 # end
 
 # def add_book
@@ -56,21 +56,21 @@ GAMES_FILE = 'games.json'
 
 loop do
   puts "\nOptions:"
-  puts "1. List all books"
-  puts "2. List all music albums"
-  puts "3. List all movies"
-  puts "4. List all games"
-  puts "5. List all genres"
-  puts "6. List all labels"
-  puts "7. List all authors"
-  puts "8. List all sources"
-  puts "9. Add a book"
-  puts "10. Add a music album"
-  puts "11. Add a movie"
-  puts "12. Add a game"
-  puts "13. Quit"
+  puts '1. List all books'
+  puts '2. List all music albums'
+  puts '3. List all movies'
+  puts '4. List all games'
+  puts '5. List all genres'
+  puts '6. List all labels'
+  puts '7. List all authors'
+  puts '8. List all sources'
+  puts '9. Add a book'
+  puts '10. Add a music album'
+  puts '11. Add a movie'
+  puts '12. Add a game'
+  puts '13. Quit'
 
-  print "Choose an option: "
+  print 'Choose an option: '
   choice = gets.chomp.to_i
 
   case choice
@@ -99,9 +99,9 @@ loop do
   when 12
     add_game
   when 13
-    puts "Goodbye!"
+    puts 'Goodbye!'
     break
   else
-    puts "Invalid choice. Please select a valid option."
+    puts 'Invalid choice. Please select a valid option.'
   end
 end
