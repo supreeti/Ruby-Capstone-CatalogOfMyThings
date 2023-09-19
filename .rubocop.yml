@@ -10,7 +10,7 @@ AllCops:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
@@ -32,9 +32,6 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-Layout/EndOfLine:
-  EnforcedStyle: crlf
-
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
