@@ -15,7 +15,6 @@ class MusicAlbum
     @genre_id = Genre.find_or_create_by_name(genre_name).id
     @archived = can_be_archived?
     @id = generate_id
-    @@all_albums << self
   end
 
   def generate_id
@@ -63,7 +62,7 @@ class MusicAlbum
     json_file_path = File.join(File.dirname(__FILE__), '..', '..', 'data', 'albums.json')
   
     File.open(json_file_path, 'w') do |file|
-      file.puts albums_json.to_json
+      file.puts JSON.pretty_generate(albums_json)
     end
   rescue JSON::GeneratorError, StandardError => e
     puts "Error al guardar datos en el archivo JSON: #{e.message}"

@@ -1,1 +1,12 @@
-[{"id":704,"title":"LOUD","artist":"Rihanna","release_date":"12-11-2010","on_spotify":true,"genre_id":471,"genre_name":"Pop","archived":null},{"id":704,"title":"LOUD","artist":"Rihanna","release_date":"12-11-2010","on_spotify":true,"genre_id":471,"genre_name":"Pop","archived":null}]
+[
+  {
+    "id": 33,
+    "title": "LOUD",
+    "artist": "Rihanna",
+    "release_date": "12/10/2010",
+    "on_spotify": true,
+    "genre_id": 800,
+    "genre_name": "Pop",
+    "archived": null
+  }
+]
