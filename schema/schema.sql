@@ -33,8 +33,7 @@ CREATE TABLE MusicAlbum (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     genre_id INT,
     artist VARCHAR(255),
-    label VARCHAR(255),
-    publish_date DATE,
+    release_date DATE,
     on_spotify BOOLEAN,
     archived BOOLEAN
 );
