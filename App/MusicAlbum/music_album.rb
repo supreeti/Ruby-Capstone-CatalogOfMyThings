@@ -39,11 +39,13 @@ class MusicAlbum
       album_data.each do |data|
         album = MusicAlbum.new(data['title'], data['artist'], data['release_date'], data['on_spotify'], data['genre_name'])
         album.instance_variable_set(:@id, data['id'])
+        @@all_albums << album
       end
     end
   rescue JSON::ParserError, StandardError => e
     puts "Error al cargar datos desde el archivo JSON: #{e.message}"
   end
+  
 
   def self.save_albums_to_json
     albums_json = @@all_albums.map do |album|
@@ -71,6 +73,8 @@ class MusicAlbum
   
 
   def self.add_album
+    @@all_albums.clear
+    load_albums_from_json
     print 'Enter the title of the album: '
     title = gets.chomp
 
