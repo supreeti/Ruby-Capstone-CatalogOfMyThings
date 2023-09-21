@@ -1,53 +1,13 @@
 require 'json'
+require_relative 'App/MusicAlbum/music_album'
+
+MusicAlbum.load_albums_from_json
 
 BOOKS_FILE = 'books.json'.freeze
 ALBUMS_FILE = 'albums.json'.freeze
 MOVIES_FILE = 'movies.json'.freeze
 GAMES_FILE = 'games.json'.freeze
 
-# def list_albums
-
-# end
-
-# def list_movies
-
-# end
-
-# def list_games
-
-# end
-
-# def list_genres
-
-# end
-
-# def list_labels
-
-# end
-
-# def list_authors
-
-# end
-
-# def list_sources
-
-# end
-
-# def add_book
-
-# end
-
-# def add_album
-
-# end
-
-# def add_movie
-
-# end
-
-# def add_game
-
-# end
 
 loop do
   puts "\nOptions:"
@@ -72,13 +32,13 @@ loop do
   when 1
     list_books
   when 2
-    list_albums
+    MusicAlbum.list_albums
   when 3
     list_movies
   when 4
     list_games
   when 5
-    list_genres
+    MusicAlbum.list_genres
   when 6
     list_labels
   when 7
@@ -89,6 +49,7 @@ loop do
     add_book
   when 10
     add_album
+    MusicAlbum.save_albums_to_json
   when 11
     add_movie
   when 12
