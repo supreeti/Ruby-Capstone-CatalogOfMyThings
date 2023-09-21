@@ -10,9 +10,11 @@ def main_menu(book_label)
     choice = gets.chomp.to_i
 
     case choice
-    when 1
+    when 1..4
       handle_listing_option(choice, book_label)
-    when 8
+    when 5..7
+      handle_listing_labels_or_authors(choice, book_label)
+    when 8..11
       handle_adding_option(choice, book_label)
     when 12
       exit_app
