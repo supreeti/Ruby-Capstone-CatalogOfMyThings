@@ -10,12 +10,10 @@ def main_menu(book_label)
     choice = gets.chomp.to_i
 
     case choice
-    when 1..4
-      handle_listing_option(choice, media_library, game_author, book_label)
-    when 5..7
-      handle_listing_labels_or_authors(choice, media_library, game_author, book_label)
-    when 8..11
-      handle_adding_option(choice, media_library, game_author, book_label)
+    when 1
+      handle_listing_option(choice, book_label)
+    when 8
+      handle_adding_option(choice, book_label)
     when 12
       exit_app
       break
@@ -25,38 +23,24 @@ def main_menu(book_label)
   end
 end
 
-def handle_listing_option(choice, media_library, game_author, book_label)
+def handle_listing_option(choice, book_label)
   case choice
   when 1
     book_label.list_books
-  when 2
-    media_library.list_music_albums
-  when 3
-    game_author.list_games
-  when 4
-    media_library.list_genres
   end
 end
 
-def handle_listing_labels_or_authors(choice, _media_library, game_author, book_label)
+def handle_listing_labels_or_authors(choice, book_label)
   case choice
   when 5
     book_label.list_labels
-  when 6
-    game_author.list_authors
   end
 end
 
-def handle_adding_option(choice, media_library, game_author, book_label)
+def handle_adding_option(choice, book_label)
   case choice
   when 8
     book_label.add_book
-  when 9
-    media_library.add_music_album
-  when 10
-    movie.add_game
-  when 11
-    game_author.add_game
   end
 end
 
@@ -65,7 +49,7 @@ def exit_app
 end
 
 def invalid_option_message
-  puts 'Invalid option. Please select a valid option (1-9 or 0 to quit).'
+  puts 'Invalid option. Please select a valid option (1-11 or 12 to quit).'
 end
 
-main_menu(media_library, game_author, book_label)
+main_menu(book_label)
