@@ -1,4 +1,5 @@
 require 'json'
+require 'set'
 require_relative '../Genre/genre'
 
 class MusicAlbum
@@ -6,6 +7,7 @@ class MusicAlbum
   attr_reader :id
 
   @@all_albums = []
+  @@unique_genres = Set.new
 
   def initialize(title, artist, release_date, on_spotify, genre_name, archived)
     @title = title
@@ -15,6 +17,8 @@ class MusicAlbum
     @genre_id = Genre.find_or_create_by_name(genre_name).id
     @archived = archived
     @id = generate_id
+
+    @@unique_genres << genre_name
   end
 
   def self.load_data_if_needed
@@ -38,7 +42,7 @@ class MusicAlbum
       temp_albums = []
 
       album_data.each do |data|
-        album = MusicAlbum.new(data['title'], data['artist'], data['release_date'], data['on_spotify'], data['genre_name'])
+        album = MusicAlbum.new(data['title'], data['artist'], data['release_date'], data['on_spotify'], data['genre_name'], data['archived'])
         album.instance_variable_set(:@id, data['id'])
         temp_albums << album
       end
@@ -74,16 +78,16 @@ class MusicAlbum
 
   def self.add_album
     load_albums_from_json
-  
+
     print 'Enter the title of the album: '
     title = gets.chomp
-  
+
     print 'Enter the artist of the album: '
     artist = gets.chomp
-  
+
     print 'Enter the release date of the album: '
     release_date = gets.chomp
-  
+
     print 'Is the album on Spotify? (y/n): '
     on_spotify = gets.chomp.downcase == 'y'
 
@@ -108,6 +112,10 @@ class MusicAlbum
       puts "-------------------------"
       puts "List of albums:"
       puts "-------------------------"
+      genres = @@unique_genres.to_a
+      puts "Genres: #{genres.join(', ')}"
+      puts "-------------------------"
+
       albums.each do |album|
         puts "ID: #{album.id}"
         puts "Title: #{album.title}"
@@ -120,11 +128,26 @@ class MusicAlbum
       end
     end
   end
+
+  def self.list_genres
+    load_data_if_needed
+    genres = @@unique_genres.to_a
+  
+    if genres.empty?
+      puts "There are no genres available in the list."
+    else
+      puts "-------------------------"
+      puts "List of genres:"
+      puts "-------------------------"
+      genres.each_with_index do |genre_name, index|
+        puts "#{index + 1}. #{genre_name}"
+      end
+    end
+  end        
   
 end
 
 def add_album
   MusicAlbum.add_album
 end
-
 
