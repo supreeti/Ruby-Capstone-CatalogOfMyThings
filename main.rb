@@ -1,7 +1,7 @@
 require 'json'
-require_relative 'game'
-require_relative 'author'
-require_relative 'item'
+require_relative 'App/Game/game'
+require_relative 'App/Author/author'
+require_relative 'App/Item/item'
 require_relative 'App/MusicAlbum/music_album'
 
 MusicAlbum.load_albums_from_json

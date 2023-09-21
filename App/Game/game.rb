@@ -1,4 +1,4 @@
-require_relative 'item'
+require_relative '../Item/item'
 
 class Game < Item
   attr_accessor :author
