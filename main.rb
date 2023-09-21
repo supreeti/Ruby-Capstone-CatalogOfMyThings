@@ -1,9 +1,30 @@
 require 'json'
+require_relative 'game' # Add the require for the Game class
+require_relative 'author' # Add the require for the Author class
 
 BOOKS_FILE = 'books.json'.freeze
 ALBUMS_FILE = 'albums.json'.freeze
 MOVIES_FILE = 'movies.json'.freeze
 GAMES_FILE = 'games.json'.freeze
+AUTHORS_FILE = 'authors.json'.freeze # Add a JSON file for authors
+
+books = []
+albums = []
+movies = []
+games = []
+authors = []
+
+books = JSON.parse(File.read(BOOKS_FILE)) if File.exist?(BOOKS_FILE)
+
+albums = JSON.parse(File.read(ALBUMS_FILE)) if File.exist?(ALBUMS_FILE)
+
+movies = JSON.parse(File.read(MOVIES_FILE)) if File.exist?(MOVIES_FILE)
+
+games = JSON.parse(File.read(GAMES_FILE)) if File.exist?(GAMES_FILE)
+
+if File.exist?(AUTHORS_FILE)
+  authors = JSON.parse(File.read(AUTHORS_FILE)).map { |author_data| Author.new(author_data['name']) }
+end
 
 # def list_albums
 
@@ -13,9 +34,11 @@ GAMES_FILE = 'games.json'.freeze
 
 # end
 
-# def list_games
-
-# end
+def list_games(games)
+  games.each do |game|
+    puts "Title: #{game.title}, Genre: #{game.genre}, Platform: #{game.platform}"
+  end
+end
 
 # def list_genres
 
@@ -25,9 +48,11 @@ GAMES_FILE = 'games.json'.freeze
 
 # end
 
-# def list_authors
-
-# end
+def list_authors(authors)
+  authors.each do |author|
+    puts "Author: #{author.name}"
+  end
+end
 
 # def list_sources
 
@@ -45,9 +70,30 @@ GAMES_FILE = 'games.json'.freeze
 
 # end
 
-# def add_game
+def add_game(games, authors)
+  print 'Enter Game Title: '
+  title = gets.chomp
+  print 'Enter Genre: '
+  genre = gets.chomp
+  print 'Enter Author Name: '
+  author_name = gets.chomp
+  print 'Enter Label: '
+  label = gets.chomp
+  print 'Enter Publish Date (YYYY-MM-DD): '
+  publish_date = Date.parse(gets.chomp)
+  print 'Enter Platform: '
+  platform = gets.chomp
+  print 'Enter Last Played Date (YYYY-MM-DD): '
+  last_played_at = Date.parse(gets.chomp)
 
-# end
+  author = authors.find { |a| a.name == author_name } || Author.new(author_name)
+  game = Game.new(title, genre, author, label, publish_date, platform, last_played_at)
+
+  author.add_item(game)
+  games << game
+
+  puts 'Game added successfully!'
+end
 
 loop do
   puts "\nOptions:"
@@ -70,29 +116,29 @@ loop do
 
   case choice
   when 1
-    list_books
+    list_books(books)
   when 2
-    list_albums
+    list_games(games)
   when 3
-    list_movies
+    list_movies(movies) # You need to implement list_movies method similarly
   when 4
-    list_games
+    list_albums(albums) # You need to implement list_albums method similarly
   when 5
     list_genres
   when 6
     list_labels
   when 7
-    list_authors
+    list_authors(authors)
   when 8
     list_sources
   when 9
-    add_book
+    add_book(books)
   when 10
-    add_album
+    add_game(games, authors)
   when 11
-    add_movie
+    add_movie(movies) # You need to implement add_movie method similarly
   when 12
-    add_game
+    add_album(albums) # You need to implement add_album method similarly
   when 13
     puts 'Goodbye!'
     break
@@ -100,3 +146,10 @@ loop do
     puts 'Invalid choice. Please select a valid option.'
   end
 end
+
+# Save data to JSON files
+File.write(BOOKS_FILE, JSON.generate(books))
+File.write(GAMES_FILE, JSON.generate(games))
+File.write(ALBUMS_FILE, JSON.generate(albums)) # Add similar lines for movies and other data
+File.write(MOVIES_FILE, JSON.generate(movies))
+File.write(AUTHORS_FILE, JSON.generate(authors)) # Save authors to the JSON file
