@@ -2,6 +2,9 @@ require 'json'
 require_relative 'game'
 require_relative 'author'
 require_relative 'item'
+require_relative 'App/MusicAlbum/music_album'
+
+MusicAlbum.load_albums_from_json
 
 BOOKS_FILE = 'books.json'.freeze
 ALBUMS_FILE = 'albums.json'.freeze
@@ -26,49 +29,17 @@ if File.exist?(AUTHORS_FILE)
   end
 end
 
-# def list_albums
-
-# end
-
-# def list_movies
-
-# end
-
 def list_games(games)
   games.each do |game|
     puts "Title: #{game.title}, Genre: #{game.genre}, Platform: #{game.platform}"
   end
 end
 
-# def list_genres
-
-# end
-
-# def list_labels
-
-# end
-
 def list_authors(authors)
   authors.each do |author|
     puts "Author: #{author.first_name} #{author.last_name}"
   end
 end
-
-# def list_sources
-
-# end
-
-# def add_book
-
-# end
-
-# def add_album
-
-# end
-
-# def add_movie
-
-# end
 
 def add_game(games, authors)
   print 'Enter Game Title: '
@@ -122,13 +93,13 @@ loop do
   when 1
     # Implement list_books(books)
   when 2
-    list_games(games)
+    MusicAlbum.list_albums
   when 3
     # Implement list_movies(movies)
   when 4
-    # Implement list_albums(albums)
+    list_games(games)
   when 5
-    # Implement list_genres
+    MusicAlbum.list_genres
   when 6
     # Implement list_labels
   when 7
@@ -138,11 +109,12 @@ loop do
   when 9
     # Implement add_book(books)
   when 10
-    add_game(games, authors)
+    add_album
+    MusicAlbum.save_albums_to_json
   when 11
     # Implement add_movie(movies)
   when 12
-    # Implement add_album(albums)
+    add_game(games, authors)
   when 13
     puts 'Goodbye!'
     break
