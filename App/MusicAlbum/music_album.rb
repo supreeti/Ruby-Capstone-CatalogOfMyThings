@@ -15,7 +15,6 @@ class MusicAlbum
     @genre_id = Genre.find_or_create_by_name(genre_name).id
     @archived = archived
     @id = generate_id
-    MusicAlbum.load_data_if_needed
   end
 
   def self.load_data_if_needed
@@ -32,13 +31,6 @@ class MusicAlbum
     @archived && @on_spotify
   end
 
-  def self.list_albums
-    @@all_albums.each do |album|
-      genre = Genre.find_by_id(album.genre_id)
-      puts "Title: #{album.title}, Artist: #{album.artist}, Genre: #{genre ? genre.name : 'Unknown'}"
-    end
-  end
-
   def self.load_albums_from_json
     if File.exist?('albums.json')
       file_data = File.read('albums.json')
@@ -51,7 +43,7 @@ class MusicAlbum
         temp_albums << album
       end
 
-      @@all_albums = temp_albums  # Reemplazar la lista de álbumes existente
+      @@all_albums = temp_albums
     end
   rescue JSON::ParserError, StandardError => e
     puts "Error al cargar datos desde el archivo JSON: #{e.message}"
@@ -105,13 +97,34 @@ class MusicAlbum
     @@all_albums << album
     save_albums_to_json
   end
+
+  def self.list_albums
+    load_data_if_needed
+    albums = @@all_albums
+
+    if albums.empty?
+      puts "There are no albums available in the list."
+    else
+      puts "-------------------------"
+      puts "List of albums:"
+      puts "-------------------------"
+      albums.each do |album|
+        puts "ID: #{album.id}"
+        puts "Title: #{album.title}"
+        puts "Artist: #{album.artist}"
+        puts "Release Date: #{album.release_date}"
+        puts "On Spotify: #{album.on_spotify ? 'Yes' : 'No'}"
+        puts "Genre: #{Genre.find_by_id(album.genre_id)&.name}"
+        puts "Archived: #{album.archived ? 'Yes' : 'No'}"
+        puts "-------------------------"
+      end
+    end
+  end
   
 end
 
 def add_album
   MusicAlbum.add_album
 end
-
-
 
 
