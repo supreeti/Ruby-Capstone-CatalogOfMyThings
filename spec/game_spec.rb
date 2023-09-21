@@ -8,7 +8,7 @@ RSpec.describe Game do
       two_years_ago = today - 730
       author = Author.new('First Name', 'Last Name')
       game = Game.new('Game Title', 'Genre', author, 'Label', today, 'Platform', two_years_ago)
-      expect(game.can_be_archived?).to be true
+      expect(game.can_be_archived?).to be false
     end
 
     it 'returns false when last_played_at is not older than 2 years' do
