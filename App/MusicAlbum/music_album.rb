@@ -7,13 +7,13 @@ class MusicAlbum
 
   @@all_albums = []
 
-  def initialize(title, artist, release_date, on_spotify, genre_name)
+  def initialize(title, artist, release_date, on_spotify, genre_name, archived)
     @title = title
     @artist = artist
     @release_date = release_date
     @on_spotify = on_spotify
     @genre_id = Genre.find_or_create_by_name(genre_name).id
-    @archived = can_be_archived?
+    @archived = archived
     @id = generate_id
     MusicAlbum.load_data_if_needed
   end
@@ -82,26 +82,30 @@ class MusicAlbum
 
   def self.add_album
     load_albums_from_json
-
+  
     print 'Enter the title of the album: '
     title = gets.chomp
-
+  
     print 'Enter the artist of the album: '
     artist = gets.chomp
-
+  
     print 'Enter the release date of the album: '
     release_date = gets.chomp
+  
+    print 'Is the album on Spotify? (y/n): '
+    on_spotify = gets.chomp.downcase == 'y'
 
-    print 'Is the album on Spotify? (true/false): '
-    on_spotify = gets.chomp.downcase == 'true'
+    archived = on_spotify
 
     print 'Enter the genre of the album: '
     genre_name = gets.chomp
 
-    album = MusicAlbum.new(title, artist, release_date, on_spotify, genre_name)
+    album = MusicAlbum.new(title, artist, release_date, on_spotify, genre_name, archived)
+
     @@all_albums << album
     save_albums_to_json
   end
+  
 end
 
 def add_album

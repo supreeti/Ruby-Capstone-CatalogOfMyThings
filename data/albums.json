@@ -1,22 +1,32 @@
 [
   {
-    "id": 724,
-    "title": "10",
-    "artist": "10",
-    "release_date": "10",
+    "id": 559,
+    "title": "RECOVERY",
+    "artist": "Eminem",
+    "release_date": "18/6/2010",
     "on_spotify": true,
-    "genre_id": 557,
-    "genre_name": "10",
-    "archived": null
+    "genre_id": 965,
+    "genre_name": "Hip-Hop",
+    "archived": true
   },
   {
-    "id": 747,
-    "title": "50",
-    "artist": "50",
-    "release_date": "50",
+    "id": 961,
+    "title": "DIVIDE",
+    "artist": "Ed Sheeran",
+    "release_date": "3/3/2017",
+    "on_spotify": false,
+    "genre_id": 877,
+    "genre_name": "Pop",
+    "archived": false
+  },
+  {
+    "id": 788,
+    "title": "ALMA",
+    "artist": "NICKI NICOLE",
+    "release_date": "18/5/2023",
     "on_spotify": true,
-    "genre_id": 909,
-    "genre_name": "50",
-    "archived": null
+    "genre_id": 965,
+    "genre_name": "Hip-Hop",
+    "archived": true
   }
 ]
