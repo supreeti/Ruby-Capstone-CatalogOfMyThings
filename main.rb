@@ -126,6 +126,5 @@ end
 # Save data to JSON files
 File.write(BOOKS_FILE, JSON.generate(books))
 File.write(GAMES_FILE, JSON.generate(games))
-File.write(ALBUMS_FILE, JSON.generate(albums))
 File.write(MOVIES_FILE, JSON.generate(movies))
 File.write(AUTHORS_FILE, JSON.generate(authors))
