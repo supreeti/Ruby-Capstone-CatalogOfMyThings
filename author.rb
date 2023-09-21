@@ -1,4 +1,6 @@
 class Author
+  attr_reader :items
+
   def initialize(first_name, last_name)
     @id = generate_unique_id
     @first_name = first_name
@@ -8,7 +10,7 @@ class Author
 
   def add_item(item)
     @items << item
-    item.author = self # This line should now work
+    item.author = self
   end
 
   private
