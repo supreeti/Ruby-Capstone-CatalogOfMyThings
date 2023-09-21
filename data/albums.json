@@ -1,22 +1,2 @@
 [
-  {
-    "id": 121,
-    "title": "RECOVERY",
-    "artist": "Eminem",
-    "release_date": "18/6/2010",
-    "on_spotify": true,
-    "genre_id": 323,
-    "genre_name": "Hip-Hop",
-    "archived": true
-  },
-  {
-    "id": 869,
-    "title": "LOUD",
-    "artist": "Rihanna",
-    "release_date": "12/11/2010",
-    "on_spotify": true,
-    "genre_id": 254,
-    "genre_name": "Pop",
-    "archived": true
-  }
 ]
