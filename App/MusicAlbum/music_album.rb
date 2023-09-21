@@ -6,8 +6,8 @@ class MusicAlbum
   attr_accessor :title, :artist, :release_date, :on_spotify, :genre_id, :archived
   attr_reader :id
 
-  @all_albums = []
-  @unique_genres = Set.new
+  @@all_albums = []
+  @@unique_genres = Set.new
 
   def initialize(title, artist, release_date, on_spotify, genre_name, archived)
     @title = title
@@ -18,7 +18,7 @@ class MusicAlbum
     @archived = archived
     @id = generate_id
 
-    @unique_genres << genre_name
+    @@unique_genres << genre_name
   end
 
   def self.load_data_if_needed
@@ -49,14 +49,14 @@ class MusicAlbum
         temp_albums << album
       end
 
-      @all_albums = temp_albums
+      @@all_albums = temp_albums
     end
-  rescue JSON::ParserError, StandardError
+  rescue JSON::ParserError, StandardError => e
     puts "Error al cargar datos desde el archivo JSON: #{e.message}"
   end
 
   def self.save_albums_to_json
-    albums_json = @all_albums.map do |album|
+    albums_json = @@all_albums.map do |album|
       {
         id: album.id,
         title: album.title,
@@ -74,7 +74,7 @@ class MusicAlbum
     File.open(json_file_path, 'w') do |file|
       file.puts JSON.pretty_generate(albums_json)
     end
-  rescue JSON::GeneratorError, StandardError
+  rescue JSON::GeneratorError, StandardError => e
     puts "Error al guardar datos en el archivo JSON: #{e.message}"
   end
 
@@ -100,13 +100,13 @@ class MusicAlbum
 
     album = MusicAlbum.new(title, artist, release_date, on_spotify, genre_name, archived)
 
-    @all_albums << album
+    @@all_albums << album
     save_albums_to_json
   end
 
   def self.list_albums
     load_data_if_needed
-    albums = @all_albums
+    albums = @@all_albums
 
     if albums.empty?
       puts 'There are no albums available in the list.'
@@ -114,7 +114,7 @@ class MusicAlbum
       puts '-------------------------'
       puts 'List of albums:'
       puts '-------------------------'
-      genres = @unique_genres.to_a
+      genres = @@unique_genres.to_a
       puts "Genres: #{genres.join(', ')}"
       puts '-------------------------'
 
@@ -133,7 +133,7 @@ class MusicAlbum
 
   def self.list_genres
     load_data_if_needed
-    genres = @unique_genres.to_a
+    genres = @@unique_genres.to_a
 
     if genres.empty?
       puts 'There are no genres available in the list.'
