@@ -1,16 +1,21 @@
-require_relative 'item'
-
 class Author
-  attr_reader :name
-  attr_accessor :items
-
-  def initialize(name)
-    @name = name
+  def initialize(first_name, last_name)
+    @id = generate_unique_id
+    @first_name = first_name
+    @last_name = last_name
     @items = []
   end
 
   def add_item(item)
-    item.author = self
-    items << item
+    @items << item
+    item.author = self # This line should now work
+  end
+
+  private
+
+  def generate_unique_id
+    timestamp = Time.now.to_i * 1000
+    random_number = rand(10_000)
+    "Aut#{timestamp}#{random_number}"
   end
 end

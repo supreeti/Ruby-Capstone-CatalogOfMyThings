@@ -1,17 +1,17 @@
-require 'date'
-require_relative 'item'
-
+# game.rb
 class Game < Item
-  attr_reader :title, :platform, :last_played_at
+  attr_accessor :author # Add this line
 
-  def initialize(title, genre, author, label, publish_date, platform, last_played_at)
-    super(genre, author, label, publish_date)
-    @title = title
-    @platform = platform
+  def initialize(multilayer, last_played_at, archived, publish_date, author)
+    super(archived, publish_date)
+    @multilayer = multilayer
     @last_played_at = last_played_at
+    author.add_item(self)
   end
 
+  private
+
   def can_be_archived?
-    super && last_played_at < (Date.today - 730) # 2 years = 730 days
+    super && (Time.new.year - @last_played_at.year) > 2
   end
 end
