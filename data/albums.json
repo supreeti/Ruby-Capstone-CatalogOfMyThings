@@ -1,12 +1,22 @@
 [
   {
-    "id": 220,
-    "title": "456",
-    "artist": "456",
-    "release_date": "465",
+    "id": 724,
+    "title": "10",
+    "artist": "10",
+    "release_date": "10",
     "on_spotify": true,
-    "genre_id": 617,
-    "genre_name": "456",
+    "genre_id": 557,
+    "genre_name": "10",
+    "archived": null
+  },
+  {
+    "id": 747,
+    "title": "50",
+    "artist": "50",
+    "release_date": "50",
+    "on_spotify": true,
+    "genre_id": 909,
+    "genre_name": "50",
     "archived": null
   }
 ]

@@ -15,6 +15,13 @@ class MusicAlbum
     @genre_id = Genre.find_or_create_by_name(genre_name).id
     @archived = can_be_archived?
     @id = generate_id
+    MusicAlbum.load_data_if_needed
+  end
+
+  def self.load_data_if_needed
+    return if @loaded_data
+    load_albums_from_json
+    @loaded_data = true
   end
 
   def generate_id
@@ -36,16 +43,19 @@ class MusicAlbum
     if File.exist?('albums.json')
       file_data = File.read('albums.json')
       album_data = JSON.parse(file_data)
+      temp_albums = []
+
       album_data.each do |data|
         album = MusicAlbum.new(data['title'], data['artist'], data['release_date'], data['on_spotify'], data['genre_name'])
         album.instance_variable_set(:@id, data['id'])
-        @@all_albums << album
+        temp_albums << album
       end
+
+      @@all_albums = temp_albums  # Reemplazar la lista de álbumes existente
     end
   rescue JSON::ParserError, StandardError => e
     puts "Error al cargar datos desde el archivo JSON: #{e.message}"
   end
-  
 
   def self.save_albums_to_json
     albums_json = @@all_albums.map do |album|
@@ -60,21 +70,19 @@ class MusicAlbum
         archived: album.archived
       }
     end
-  
+
     json_file_path = File.join(File.dirname(__FILE__), '..', '..', 'data', 'albums.json')
-  
+
     File.open(json_file_path, 'w') do |file|
       file.puts JSON.pretty_generate(albums_json)
     end
   rescue JSON::GeneratorError, StandardError => e
     puts "Error al guardar datos en el archivo JSON: #{e.message}"
   end
-  
-  
 
   def self.add_album
-    @@all_albums.clear
     load_albums_from_json
+
     print 'Enter the title of the album: '
     title = gets.chomp
 
