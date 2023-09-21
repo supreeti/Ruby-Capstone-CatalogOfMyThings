@@ -6,8 +6,8 @@ class MusicAlbum
   attr_accessor :title, :artist, :release_date, :on_spotify, :genre_id, :archived
   attr_reader :id
 
-  @@all_albums = []
-  @@unique_genres = Set.new
+  @all_albums = []
+  @unique_genres = Set.new
 
   def initialize(title, artist, release_date, on_spotify, genre_name, archived)
     @title = title
@@ -18,11 +18,12 @@ class MusicAlbum
     @archived = archived
     @id = generate_id
 
-    @@unique_genres << genre_name
+    @unique_genres << genre_name
   end
 
   def self.load_data_if_needed
     return if @loaded_data
+
     load_albums_from_json
     @loaded_data = true
   end
@@ -42,19 +43,20 @@ class MusicAlbum
       temp_albums = []
 
       album_data.each do |data|
-        album = MusicAlbum.new(data['title'], data['artist'], data['release_date'], data['on_spotify'], data['genre_name'], data['archived'])
+        album = MusicAlbum.new(data['title'], data['artist'], data['release_date'], data['on_spotify'],
+                               data['genre_name'], data['archived'])
         album.instance_variable_set(:@id, data['id'])
         temp_albums << album
       end
 
-      @@all_albums = temp_albums
+      @all_albums = temp_albums
     end
-  rescue JSON::ParserError, StandardError => e
+  rescue JSON::ParserError, StandardError
     puts "Error al cargar datos desde el archivo JSON: #{e.message}"
   end
 
   def self.save_albums_to_json
-    albums_json = @@all_albums.map do |album|
+    albums_json = @all_albums.map do |album|
       {
         id: album.id,
         title: album.title,
@@ -72,7 +74,7 @@ class MusicAlbum
     File.open(json_file_path, 'w') do |file|
       file.puts JSON.pretty_generate(albums_json)
     end
-  rescue JSON::GeneratorError, StandardError => e
+  rescue JSON::GeneratorError, StandardError
     puts "Error al guardar datos en el archivo JSON: #{e.message}"
   end
 
@@ -98,23 +100,23 @@ class MusicAlbum
 
     album = MusicAlbum.new(title, artist, release_date, on_spotify, genre_name, archived)
 
-    @@all_albums << album
+    @all_albums << album
     save_albums_to_json
   end
 
   def self.list_albums
     load_data_if_needed
-    albums = @@all_albums
+    albums = @all_albums
 
     if albums.empty?
-      puts "There are no albums available in the list."
+      puts 'There are no albums available in the list.'
     else
-      puts "-------------------------"
-      puts "List of albums:"
-      puts "-------------------------"
-      genres = @@unique_genres.to_a
+      puts '-------------------------'
+      puts 'List of albums:'
+      puts '-------------------------'
+      genres = @unique_genres.to_a
       puts "Genres: #{genres.join(', ')}"
-      puts "-------------------------"
+      puts '-------------------------'
 
       albums.each do |album|
         puts "ID: #{album.id}"
@@ -124,30 +126,28 @@ class MusicAlbum
         puts "On Spotify: #{album.on_spotify ? 'Yes' : 'No'}"
         puts "Genre: #{Genre.find_by_id(album.genre_id)&.name}"
         puts "Archived: #{album.archived ? 'Yes' : 'No'}"
-        puts "-------------------------"
+        puts '-------------------------'
       end
     end
   end
 
   def self.list_genres
     load_data_if_needed
-    genres = @@unique_genres.to_a
-  
+    genres = @unique_genres.to_a
+
     if genres.empty?
-      puts "There are no genres available in the list."
+      puts 'There are no genres available in the list.'
     else
-      puts "-------------------------"
-      puts "List of genres:"
-      puts "-------------------------"
+      puts '-------------------------'
+      puts 'List of genres:'
+      puts '-------------------------'
       genres.each_with_index do |genre_name, index|
         puts "#{index + 1}. #{genre_name}"
       end
     end
-  end        
-  
+  end
 end
 
 def add_album
   MusicAlbum.add_album
 end
-
