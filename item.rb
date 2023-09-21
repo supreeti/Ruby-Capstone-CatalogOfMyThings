@@ -1,4 +1,3 @@
-# item.rb
 require 'date'
 
 class Item
