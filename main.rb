@@ -13,13 +13,13 @@ GAMES_FILE = 'games.json'.freeze
 AUTHORS_FILE = 'authors.json'.freeze
 
 books = []
-albums = []
+##albums = []
 movies = []
 games = []
 authors = []
 
 books = JSON.parse(File.read(BOOKS_FILE)) if File.exist?(BOOKS_FILE)
-albums = JSON.parse(File.read(ALBUMS_FILE)) if File.exist?(ALBUMS_FILE)
+##albums = JSON.parse(File.read(ALBUMS_FILE)) if File.exist?(ALBUMS_FILE)
 movies = JSON.parse(File.read(MOVIES_FILE)) if File.exist?(MOVIES_FILE)
 games = JSON.parse(File.read(GAMES_FILE)) if File.exist?(GAMES_FILE)
 
