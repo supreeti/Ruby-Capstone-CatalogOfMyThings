@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative 'genre'
+require_relative '../App/Genre/genre'
 
 RSpec.describe Genre do
   before(:each) do

@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative 'music_album'
+require_relative '../App/MusicAlbum/music_album'
 
 def capture_stdout
   $stdout = StringIO.new

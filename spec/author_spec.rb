@@ -1,4 +1,4 @@
-require_relative '../author'
+require_relative '../App/Author/author'
 
 RSpec.describe Author do
   describe '#add_item' do

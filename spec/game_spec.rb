@@ -1,5 +1,5 @@
-require_relative '../game'
-require_relative '../author'
+require_relative '../App/Game/game'
+require_relative '../App/Author/author'
 
 RSpec.describe Game do
   describe '#can_be_archived?' do
