@@ -1,4 +1,4 @@
-require './App/Books/book'
+require_relative '../App/Book/book'
 
 describe Book do
   let(:book) { Book.new(Date.parse('21-09-2023'), 'Mad Man', 'good') }

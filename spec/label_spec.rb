@@ -1,5 +1,5 @@
-require '../Books/label'
-require '../Books/book'
+require '../App/Book/label'
+require '../App/Book/book'
 
 describe Label do
   let(:label) { Label.new('Gift', 'Blue') }
