@@ -1,10 +1,10 @@
-require '../App/Book/label'
-require '../App/Book/book'
+require_relative '../App/Book/label'
+require_relative '../App/Book/book'
 
 describe Label do
-  let(:label) { Label.new('Gift', 'Blue') }
+  let(:label) { Label.new(1,'Gift', 'Blue') }
   let(:item) { double('Item') }
-  let(:book) { Book.new(Date.parse('21-09-2023'), 'Mad Man', 'good') }
+  let(:book) { Book.new('action', 'martin', 'good', Date.parse('21-09-2023'), 'Mad Man', 'good') }
 
   context '#initialize' do
     it 'initializes a Label object with title, color, and an empty items array' do
