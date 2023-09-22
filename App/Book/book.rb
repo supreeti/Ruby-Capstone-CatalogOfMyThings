@@ -4,8 +4,8 @@ class Book < Item
   attr_accessor :publisher, :cover_state, :publish_date
   attr_reader :id
 
-  def initialize(publish_date, publisher, cover_state)
-    super(publish_date, archived: archived)
+  def initialize(genre, author, label, publish_date, publisher, cover_state)
+    super(genre, author, label, publish_date, archived: archived)
     @publisher = publisher
     @cover_state = cover_state
   end
@@ -13,4 +13,9 @@ class Book < Item
   def can_be_archived?
     super || @cover_state == 'bad'
   end
+
+  def label=(new_label)
+    @label = new_label
+  end
 end
+

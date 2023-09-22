@@ -46,10 +46,16 @@ class BookLabel
     puts 'Enter the cover state of the book:'
     cover_state = gets.chomp
 
+    puts 'Enter the genre book:'
+    genre = gets.chomp
+
+    puts 'Enter the author name:'
+    author = gets.chomp
+
     label = find_or_create_label(label_title)
-    book = Book.new(publish_date, publisher, cover_state)
+    book = Book.new(genre, author, label, publish_date, publisher, cover_state)
     books << book
-    label.add_item(title, book)
+    label.add_item(book)
     save_data
     puts 'Book added successfully!'
   end
