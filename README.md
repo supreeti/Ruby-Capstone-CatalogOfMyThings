@@ -95,6 +95,14 @@ To see the display of my portfolio use this link: (https://political-divisions.o
 
 <!-- GETTING STARTED -->
 
+## 🦻 WalkThrough Video <a name="#walkthrough-demo"></a>
+
+-  [WalkThrough Video](https://www.youtube.com/watch?v=v9hxBCZo57Q)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
 
 ## 💻 Getting Started 
 
@@ -138,7 +146,7 @@ To run the project, execute the following command:
 To run tests, run the following command:
 
 ```sh
-  rubocop -A
+  rspec
 ```
 
 ### Run Linter Tests
