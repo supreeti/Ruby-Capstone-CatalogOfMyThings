@@ -1,4 +1,3 @@
-require 'date'
 require_relative '../App/Item/item'
 
 RSpec.describe Item do
