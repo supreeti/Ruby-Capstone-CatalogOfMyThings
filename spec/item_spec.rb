@@ -1,6 +1,6 @@
 require_relative '../App/Item/item'
 
-RSpec.describe Item do
+describe Item do
   describe '#initialize' do
     it 'creates a new item with the provided attributes' do
       item = Item.new('action', 'martin', 'Ray_publishing', Date.parse('21-09-2012'))
