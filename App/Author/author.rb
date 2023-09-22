@@ -32,7 +32,7 @@ class Author
     author_data = JSON.parse(File.read('authors.json'))
     author_data.map do |data|
       author = Author.new(data['firstname'], data['lastname'])
-      author.id = data['id'] # Set the author's ID
+      author.id = data['id']
       author
     end
   end

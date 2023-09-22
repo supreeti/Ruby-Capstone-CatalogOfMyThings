@@ -4,7 +4,6 @@ require 'json'
 
 class BookLabel
   BOOKS_FILE = 'data/book_label.json'.freeze
-  # DATA_FILE_PATH = 'data/book_label.json'.freeze
 
   attr_accessor :books, :labels
 
@@ -103,7 +102,6 @@ class BookLabel
     if label.nil?
       label_id = books.length + 1
 
-      # Check if the title is not nil and not empty before asking for the color
       if title && !title.empty?
         puts "Enter the color for the label '#{title}':"
         label_color = gets.chomp

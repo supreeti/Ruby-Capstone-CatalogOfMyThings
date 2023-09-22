@@ -1,9 +1,7 @@
-# game_spec.rb
 require 'rspec'
 require_relative '../App/Game/game'
 
 RSpec.describe Game do
-  # Adjust the let(:game) definition to match the Game class's initialize method
   let(:game) { Game.new(1, nil, nil, nil, '2023-07-01', true, '2023-07-01') }
 
   describe '#initialize' do

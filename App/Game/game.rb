@@ -12,7 +12,7 @@ class Game < Item
     @id = id || Random.rand(1..100)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
-    @publish_date = publish_date # Ensure that publish_date is a Date object
+    @publish_date = publish_date
   end
 
   def self.validate_date
@@ -29,7 +29,7 @@ class Game < Item
   def self.game_details
     game_data = {
       genre: 'Game',
-      author: nil, # We'll set this below
+      author: nil,
       label: nil,
       publish_date: Date.today,
       multiplayer: false,

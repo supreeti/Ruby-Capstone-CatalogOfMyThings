@@ -1,12 +1,2 @@
 [
-  {
-    "id": 112,
-    "title": "Album Title",
-    "artist": "Artist Name",
-    "release_date": "2023-09-21",
-    "on_spotify": true,
-    "genre_id": 240,
-    "genre_name": "Genre",
-    "archived": true
-  }
 ]

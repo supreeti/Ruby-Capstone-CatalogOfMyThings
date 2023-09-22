@@ -8,10 +8,6 @@ require_relative 'App/Book/book_label'
 MusicAlbum.load_albums_from_json
 
 book_label = BookLabel.new
-# ALBUMS_FILE = 'albums.json'.freeze
-# MOVIES_FILE = 'movies.json'.freeze
-# GAMES_FILE = 'games.json'.freeze
-# AUTHORS_FILE = 'authors.json'.freeze
 
 loop do
   puts "\nOptions:"
