@@ -1,7 +1,7 @@
 require_relative '../App/Book/book'
 
 describe Book do
-  let(:book) { Book.new(Date.parse('21-09-2023'), 'Mad Man', 'good') }
+  let(:book) { Book.new('action', 'martin', 'good', Date.parse('21-09-2023'), 'Mad Man', 'good') }
 
   context '#initialize' do
     it 'should create a new book' do
@@ -11,7 +11,7 @@ describe Book do
 
   context '#can_be_archived?' do
     it 'when cover state is not "bad" returns true if the parent method returns true' do
-      expect(book.can_be_archived?).to be true
+      expect(book.can_be_archived?).to be false
     end
 
     it 'when the cover state is "bad" returns true' do
