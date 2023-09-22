@@ -14,8 +14,5 @@ class Book < Item
     super || @cover_state == 'bad'
   end
 
-  def label=(new_label)
-    @label = new_label
-  end
+  attr_writer :label
 end
-

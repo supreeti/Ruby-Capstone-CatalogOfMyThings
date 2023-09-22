@@ -31,7 +31,7 @@ class BookLabel
 
   def add_book
     puts 'Enter Title:'
-    title = gets.chomp
+    gets.chomp
 
     puts 'Enter the label title :'
     label_title = gets.chomp
@@ -65,7 +65,7 @@ class BookLabel
       books: books.map { |book| book_to_hash(book) },
       labels: labels.map { |label| label_to_hash(label) }
     }
-  
+
     File.write(BOOKS_FILE, JSON.pretty_generate(data))
   end
 
