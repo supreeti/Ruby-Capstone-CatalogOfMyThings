@@ -15,6 +15,13 @@ class Game < Item
     @publish_date = publish_date
   end
 
+  def can_be_archived?
+    return (Date.today - Date.parse(last_played_at)).to_i > 730 if super
+
+
+    false
+  end
+
   def self.validate_date
     date_input = gets.chomp
 
