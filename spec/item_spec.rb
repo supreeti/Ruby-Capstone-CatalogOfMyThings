@@ -26,7 +26,7 @@ RSpec.describe Item do
   end
 
   describe '#move_to_archive' do
-    it 'archives the item if it can be archived' do
+    it 'archives item if it can be archived' do
       item = Item.new('action', 'martin', 'Ray_publishing', Date.parse('21-09-2012'))
       item.move_to_archive
       expect(item.archived).to be(true)
