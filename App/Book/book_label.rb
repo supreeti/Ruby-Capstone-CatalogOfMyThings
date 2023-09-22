@@ -65,7 +65,8 @@ class BookLabel
       books: books.map { |book| book_to_hash(book) },
       labels: labels.map { |label| label_to_hash(label) }
     }
-    File.write(BOOKS_FILE, JSON.generate(data))
+  
+    File.write(BOOKS_FILE, JSON.pretty_generate(data))
   end
 
   def load_data

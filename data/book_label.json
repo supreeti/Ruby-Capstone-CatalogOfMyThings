@@ -1,1 +1,28 @@
-{"books":[{"id":790,"publisher":"new history","cover_state":"image","publish_date":"17-07-2017"}],"labels":[{"id":1,"title":"new book","color":"red"}]}
+{
+  "books": [
+    {
+      "id": 265,
+      "publisher": "New History!",
+      "cover_state": "Image",
+      "publish_date": "17-07-2017"
+    },
+    {
+      "id": 746,
+      "publisher": "get a new book!",
+      "cover_state": "Image",
+      "publish_date": "25-05-2022"
+    }
+  ],
+  "labels": [
+    {
+      "id": 1,
+      "title": "New Book!",
+      "color": "Black"
+    },
+    {
+      "id": 2,
+      "title": "New Book",
+      "color": "Red"
+    }
+  ]
+}
