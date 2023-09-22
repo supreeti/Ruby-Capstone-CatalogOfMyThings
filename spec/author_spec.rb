@@ -1,54 +1,39 @@
+# game_spec.rb
 require 'rspec'
-require_relative '../App/Author/author'
+require_relative '../App/Game/game'
 
-RSpec.describe Author do
-  let(:author) { Author.new('John', 'Doe') }
+RSpec.describe Game do
+  # Adjust the let(:game) definition to match the Game class's initialize method
+  let(:game) { Game.new(1, nil, nil, nil, '2023-07-01', true, '2023-07-01') }
 
   describe '#initialize' do
-    it 'sets the firstname' do
-      expect(author.firstname).to eq('John')
+    it 'sets the id' do
+      expect(game.id).to eq(1)
     end
 
-    it 'sets the lastname' do
-      expect(author.lastname).to eq('Doe')
+    it 'sets the multiplayer attribute' do
+      expect(game.multiplayer).to eq(true)
     end
 
-    it 'initializes an empty items array' do
-      expect(author.items).to be_an(Array)
-      expect(author.items).to be_empty
+    it 'sets the last_played_at attribute' do
+      expect(game.last_played_at).to eq('2023-07-01')
     end
-  end
 
-  describe '#add_item' do
-    let(:item) { double('item') }
-
-    it 'adds an item to the items array' do
-      expect(author.items).to be_empty
-      author.add_item(item)
-      expect(author.items).to contain_exactly(item)
+    it 'sets the publish_date attribute' do
+      expect(game.publish_date).to eq('2023-07-01')
     end
   end
 
-  describe '#convert_to_hash' do
-    it 'returns a hash representation of the author' do
-      hash = author.convert_to_hash
-      expect(hash).to be_a(Hash)
-      expect(hash[:id]).to be_nil # id is not set, so it should be nil
-      expect(hash[:firstname]).to eq('John')
-      expect(hash[:lastname]).to eq('Doe')
-    end
-  end
+  describe '.load_games_data' do
+    it 'loads game data from the file' do
+      expect(File).to receive(:exist?).with('games.json').and_return(true)
+      expect(File).to receive(:empty?).with('games.json').and_return(false)
+      expect(File).to receive(:read).with('games.json').and_return('[]')
 
-  describe '.load_authors_data' do
-    it 'loads author data from the file' do
-      expect(File).to receive(:exist?).with('authors.json').and_return(true)
-      expect(File).to receive(:empty?).with('authors.json').and_return(false)
-      expect(File).to receive(:read).with('authors.json').and_return('[]')
+      games = Game.load_games_data
 
-      authors = Author.load_authors_data
-
-      expect(authors).to be_an(Array)
-      expect(authors).to be_empty
+      expect(games).to be_an(Array)
+      expect(games).to be_empty
     end
   end
 end

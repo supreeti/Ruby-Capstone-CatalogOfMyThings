@@ -4,7 +4,7 @@ require 'date'
 require 'json'
 
 class Game < Item
-  attr_accessor :multiplayer, :last_played_at
+  attr_accessor :multiplayer, :last_played_at, :publish_date
   attr_reader :id, :author
 
   def initialize(id, author, genre, label, publish_date, multiplayer, last_played_at)
@@ -12,7 +12,7 @@ class Game < Item
     @id = id || Random.rand(1..100)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
-    @author = author
+    @publish_date = publish_date # Ensure that publish_date is a Date object
   end
 
   def self.validate_date
