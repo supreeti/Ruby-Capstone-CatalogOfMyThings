@@ -113,7 +113,7 @@ class Game < Item
       game: game,
       author: author,
       loaded_authors: loaded_authors,
-      loaded_games: loaded_games,
+      loaded_games: loaded_games
     }
   end
 
@@ -126,7 +126,7 @@ class Game < Item
         'label' => game.label,
         'publish_date' => Date.today,
         'multiplayer' => game.multiplayer,
-        'last_played_at' => game.last_played_at,
+        'last_played_at' => game.last_played_at
       }
     end
 
