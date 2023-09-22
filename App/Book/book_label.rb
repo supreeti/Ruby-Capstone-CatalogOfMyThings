@@ -36,8 +36,7 @@ class BookLabel
     label_title = gets.chomp
 
     puts 'Enter the publish date of the book (DD-MM-YYYY):'
-    publish_date_str = gets.chomp
-    publish_date = Date.strptime(publish_date_str, '%d-%m-%Y')
+    publish_date = gets.chomp
 
     puts 'Enter the publisher of the book:'
     publisher = gets.chomp
@@ -83,7 +82,7 @@ class BookLabel
       id: book.id,
       genre: book.genre,
       author: book.author,
-      publish_date: book.publish_date&.strftime('%d-%m-%Y'),
+      publish_date: book.publish_date,
       publisher: book.publisher,
       cover_state: book.cover_state
     }
