@@ -43,7 +43,7 @@ RSpec.describe MusicAlbum do
 
     it 'no carga datos si ya se han cargado' do
       MusicAlbum.instance_variable_set(:@loaded_data, true)
-      expect { MusicAlbum.load_data_if_needed }.not_to change { MusicAlbum.class_variable_get(:@@all_albums) }
+      expect { MusicAlbum.load_data_if_needed }.not_to(change { MusicAlbum.class_variable_get(:@@all_albums) })
     end
   end
 
@@ -57,7 +57,7 @@ RSpec.describe MusicAlbum do
 
   describe '.list_genres' do
     it 'lista los géneros disponibles' do
-      genre_names = ['Rock', 'Pop', 'Hip-Hop']
+      genre_names = %w[Rock Pop Hip-Hop]
       genre_names.each { |name| MusicAlbum.class_variable_get(:@@unique_genres) << name }
       output = capture_stdout { MusicAlbum.list_genres }
       genre_names.each do |name|
