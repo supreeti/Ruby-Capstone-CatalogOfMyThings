@@ -37,18 +37,18 @@ RSpec.describe MusicAlbum do
   end
 
   describe '.load_data_if_needed' do
-    it 'carga datos si aún no se han cargado' do
+    it 'load data if it has not already been loaded' do
       expect { MusicAlbum.load_data_if_needed }.not_to raise_error
     end
 
-    it 'no carga datos si ya se han cargado' do
+    it 'does not load data if it has already been loaded' do
       MusicAlbum.instance_variable_set(:@loaded_data, true)
       expect { MusicAlbum.load_data_if_needed }.not_to(change { MusicAlbum.class_variable_get(:@@all_albums) })
     end
   end
 
   describe '.save_albums_to_json' do
-    it 'guarda los álbumes en un archivo JSON' do
+    it 'save albums to a JSON file' do
       album = MusicAlbum.new('Test Album', 'Test Artist', '2023-09-21', true, 'Test Genre', true)
       MusicAlbum.class_variable_get(:@@all_albums) << album
       expect { MusicAlbum.save_albums_to_json }.not_to raise_error
@@ -56,7 +56,7 @@ RSpec.describe MusicAlbum do
   end
 
   describe '.list_genres' do
-    it 'lista los géneros disponibles' do
+    it 'list available genres' do
       genre_names = %w[Rock Pop Hip-Hop]
       genre_names.each { |name| MusicAlbum.class_variable_get(:@@unique_genres) << name }
       output = capture_stdout { MusicAlbum.list_genres }
@@ -65,7 +65,7 @@ RSpec.describe MusicAlbum do
       end
     end
 
-    it 'muestra un mensaje si no hay géneros disponibles' do
+    it 'shows a message if there are no genres available' do
       MusicAlbum.class_variable_set(:@@unique_genres, Set.new)
       output = capture_stdout { MusicAlbum.list_genres }
       expect(output).to include('no genres available')
