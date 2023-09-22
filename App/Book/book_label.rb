@@ -82,10 +82,11 @@ class BookLabel
   def book_to_hash(book)
     {
       id: book.id,
+      genre: book.genre,
+      author: book.author,
+      publish_date: book.publish_date&.strftime('%d-%m-%Y'),
       publisher: book.publisher,
-      cover_state: book.cover_state,
-      publish_date: book.publish_date&.strftime('%d-%m-%Y')
-
+      cover_state: book.cover_state
     }
   end
 
@@ -119,8 +120,7 @@ class BookLabel
   def hash_to_book(hash)
     label = find_or_create_label(hash['label_title'])
     Book.new(
-      hash['id'],
-      'Book',
+      hash['genre'],
       hash['author'],
       label,
       hash['publish_date'],

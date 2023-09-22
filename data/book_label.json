@@ -1,28 +1,19 @@
 {
   "books": [
     {
-      "id": 265,
-      "publisher": "New History!",
-      "cover_state": "Image",
-      "publish_date": "17-07-2017"
-    },
-    {
-      "id": 746,
-      "publisher": "get a new book!",
-      "cover_state": "Image",
-      "publish_date": "25-05-2022"
+      "id": 996,
+      "genre": "Drama",
+      "author": "Jose Hernandez",
+      "publish_date": "17-07-2023",
+      "publisher": "Get a new book!",
+      "cover_state": "Image"
     }
   ],
   "labels": [
     {
       "id": 1,
-      "title": "New Book!",
-      "color": "Black"
-    },
-    {
-      "id": 2,
-      "title": "New Book",
-      "color": "Red"
+      "title": "Martin Fierro",
+      "color": "red"
     }
   ]
 }
