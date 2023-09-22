@@ -35,4 +35,40 @@ RSpec.describe MusicAlbum do
       expect(output).to include('Yes')
     end
   end
+
+  describe '.load_data_if_needed' do
+    it 'carga datos si aún no se han cargado' do
+      expect { MusicAlbum.load_data_if_needed }.not_to raise_error
+    end
+
+    it 'no carga datos si ya se han cargado' do
+      MusicAlbum.instance_variable_set(:@loaded_data, true)
+      expect { MusicAlbum.load_data_if_needed }.not_to(change { MusicAlbum.class_variable_get(:@@all_albums) })
+    end
+  end
+
+  describe '.save_albums_to_json' do
+    it 'guarda los álbumes en un archivo JSON' do
+      album = MusicAlbum.new('Test Album', 'Test Artist', '2023-09-21', true, 'Test Genre', true)
+      MusicAlbum.class_variable_get(:@@all_albums) << album
+      expect { MusicAlbum.save_albums_to_json }.not_to raise_error
+    end
+  end
+
+  describe '.list_genres' do
+    it 'lista los géneros disponibles' do
+      genre_names = %w[Rock Pop Hip-Hop]
+      genre_names.each { |name| MusicAlbum.class_variable_get(:@@unique_genres) << name }
+      output = capture_stdout { MusicAlbum.list_genres }
+      genre_names.each do |name|
+        expect(output).to include(name)
+      end
+    end
+
+    it 'muestra un mensaje si no hay géneros disponibles' do
+      MusicAlbum.class_variable_set(:@@unique_genres, Set.new)
+      output = capture_stdout { MusicAlbum.list_genres }
+      expect(output).to include('no genres available')
+    end
+  end
 end
