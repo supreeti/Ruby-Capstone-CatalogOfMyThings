@@ -1,30 +1,37 @@
+require 'rspec'
 require_relative '../App/Game/game'
-require_relative '../App/Author/author'
 
 RSpec.describe Game do
-  describe '#can_be_archived?' do
-    it 'returns true when both conditions are met' do
-      today = Date.today
-      two_years_ago = today - 730
-      author = Author.new('First Name', 'Last Name')
-      game = Game.new('Game Title', 'Genre', author, 'Label', today, 'Platform', two_years_ago)
-      expect(game.can_be_archived?).to be false
+  let(:game) { Game.new(1, true, '2023-07-01', Date.today) }
+
+  describe '#initialize' do
+    it 'sets the id' do
+      expect(game.id).to eq(1)
     end
 
-    it 'returns false when last_played_at is not older than 2 years' do
-      today = Date.today
-      one_year_ago = today - 365
-      author = Author.new('First Name', 'Last Name')
-      game = Game.new('Game Title', 'Genre', author, 'Label', today, 'Platform', one_year_ago)
-      expect(game.can_be_archived?).to be false
+    it 'sets the multiplayer attribute' do
+      expect(game.multiplayer).to eq(true)
     end
 
-    it 'returns false when the parent method returns false' do
-      today = Date.today
-      ten_years_ago = today - (10 * 365)
-      author = Author.new('First Name', 'Last Name')
-      game = Game.new('Game Title', 'Genre', author, 'Label', ten_years_ago, 'Platform', today)
-      expect(game.can_be_archived?).to be false
+    it 'sets the last_played_at attribute' do
+      expect(game.last_played_at).to eq('2023-07-01')
+    end
+
+    it 'sets the publish_date attribute' do
+      expect(game.publish_date).to eq(Date.today)
+    end
+  end
+
+  describe '.load_games_data' do
+    it 'loads game data from the file' do
+      expect(File).to receive(:exist?).with('games.json').and_return(true)
+      expect(File).to receive(:empty?).with('games.json').and_return(false)
+      expect(File).to receive(:read).with('games.json').and_return('[]')
+
+      games = Game.load_games_data
+
+      expect(games).to be_an(Array)
+      expect(games).to be_empty
     end
   end
 end
