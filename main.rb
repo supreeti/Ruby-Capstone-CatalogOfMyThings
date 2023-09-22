@@ -17,16 +17,14 @@ loop do
   puts "\nOptions:"
   puts '1. List all books'
   puts '2. List all music albums'
-  puts '3. List all movies'
-  puts '4. List all games'
-  puts '5. List all genres'
-  puts '6. List all labels'
-  puts '7. List all authors'
-  puts '8. Add a book'
-  puts '9. Add a music album'
-  puts '10. Add a movie'
-  puts '11. Add a game'
-  puts '12. Quit'
+  puts '3. List all games'
+  puts '4. List all genres'
+  puts '5. List all labels'
+  puts '6. List all authors'
+  puts '7. Add a book'
+  puts '8. Add a music album'
+  puts '9. Add a game'
+  puts '10. Quit'
 
   print 'Choose an option: '
   choice = gets.chomp.to_i
@@ -37,25 +35,21 @@ loop do
   when 2
     MusicAlbum.list_albums
   when 3
-    # Implement list_movies(movies)
-  when 4
     Game.list_all_games
-  when 5
+  when 4
     MusicAlbum.list_genres
-  when 6
+  when 5
     book_label.list_labels
-  when 7
+  when 6
     Author.list_all_authors
-  when 8
+  when 7
     book_label.add_book
-  when 9
+  when 8
     add_album
     MusicAlbum.save_albums_to_json
-  when 10
-    # Implement add_movie(movies)
-  when 11
+  when 9
     Game.add_a_game
-  when 12
+  when 10
     puts 'Goodbye!'
     break
   else
