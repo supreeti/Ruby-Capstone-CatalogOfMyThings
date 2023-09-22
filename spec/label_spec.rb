@@ -2,7 +2,7 @@ require_relative '../App/Book/label'
 require_relative '../App/Book/book'
 
 describe Label do
-  let(:label) { Label.new(1,'Gift', 'Blue') }
+  let(:label) { Label.new(1, 'Gift', 'Blue') }
   let(:item) { double('Item') }
   let(:book) { Book.new('action', 'martin', 'good', Date.parse('21-09-2023'), 'Mad Man', 'good') }
 
