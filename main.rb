@@ -8,11 +8,10 @@ require_relative 'App/Book/book_label'
 MusicAlbum.load_albums_from_json
 
 book_label = BookLabel.new
-ALBUMS_FILE = 'albums.json'.freeze
-MOVIES_FILE = 'movies.json'.freeze
-GAMES_FILE = 'games.json'.freeze
-AUTHORS_FILE = 'authors.json'.freeze
-
+# ALBUMS_FILE = 'albums.json'.freeze
+# MOVIES_FILE = 'movies.json'.freeze
+# GAMES_FILE = 'games.json'.freeze
+# AUTHORS_FILE = 'authors.json'.freeze
 
 loop do
   puts "\nOptions:"
@@ -40,13 +39,13 @@ loop do
   when 3
     # Implement list_movies(movies)
   when 4
-    list_games(games)
+    Game.list_all_games
   when 5
     MusicAlbum.list_genres
   when 6
     book_label.list_labels
   when 7
-    list_authors(authors)
+    Author.list_all_authors
   when 8
     book_label.add_book
   when 9
@@ -55,7 +54,7 @@ loop do
   when 10
     # Implement add_movie(movies)
   when 11
-    add_game(games, authors)
+    Game.add_a_game
   when 12
     puts 'Goodbye!'
     break

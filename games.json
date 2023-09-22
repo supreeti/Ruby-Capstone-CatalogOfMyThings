@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "genre": null,
+    "author": "2023-09-22",
+    "label": null,
+    "publish_date": "2023-09-22",
+    "multiplayer": true,
+    "last_played_at": "2023-03-28"
+  },
+  {
+    "id": 2,
+    "genre": null,
+    "author": "2023-09-22",
+    "label": null,
+    "publish_date": "2023-09-22",
+    "multiplayer": false,
+    "last_played_at": "2020-01-01"
+  },
+  {
+    "id": 3,
+    "genre": "Game",
+    "author": "2023-09-22",
+    "label": "#<Author:0x000000010ee3b458>",
+    "publish_date": "2023-09-22",
+    "multiplayer": true,
+    "last_played_at": "2000-02-02"
+  },
+  {
+    "id": 4,
+    "genre": "#<Author:0x000000010996b298>",
+    "author": "2023-09-22",
+    "label": "Game",
+    "publish_date": "2023-09-22",
+    "multiplayer": true,
+    "last_played_at": "2000-02-03"
+  }
+]
