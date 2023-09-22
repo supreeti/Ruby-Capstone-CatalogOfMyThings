@@ -1,3 +1,5 @@
+require 'json'
+
 class Author
   attr_accessor :id, :firstname, :lastname, :items
 

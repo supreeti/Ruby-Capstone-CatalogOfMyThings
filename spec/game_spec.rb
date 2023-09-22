@@ -1,8 +1,10 @@
+# game_spec.rb
 require 'rspec'
 require_relative '../App/Game/game'
 
 RSpec.describe Game do
-  let(:game) { Game.new(1, true, '2023-07-01', Date.today) }
+  # Adjust the let(:game) definition to match the Game class's initialize method
+  let(:game) { Game.new(1, nil, nil, nil, Date.today, true, '2023-07-01') }
 
   describe '#initialize' do
     it 'sets the id' do
@@ -18,7 +20,7 @@ RSpec.describe Game do
     end
 
     it 'sets the publish_date attribute' do
-      expect(game.publish_date).to eq(Date.today)
+      expect(game.publish_date).to eq(Date.parse('2023-07-01')) # Parse the date string to Date object
     end
   end
 

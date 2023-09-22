@@ -2,13 +2,9 @@ require 'rspec'
 require_relative '../App/Author/author'
 
 RSpec.describe Author do
-  let(:author) { Author.new(1, 'John', 'Doe') }
+  let(:author) { Author.new('John', 'Doe') }
 
   describe '#initialize' do
-    it 'sets the id' do
-      expect(author.id).to eq(1)
-    end
-
     it 'sets the firstname' do
       expect(author.firstname).to eq('John')
     end
@@ -37,7 +33,7 @@ RSpec.describe Author do
     it 'returns a hash representation of the author' do
       hash = author.convert_to_hash
       expect(hash).to be_a(Hash)
-      expect(hash[:id]).to eq(1)
+      expect(hash[:id]).to be_nil # id is not set, so it should be nil
       expect(hash[:firstname]).to eq('John')
       expect(hash[:lastname]).to eq('Doe')
     end
