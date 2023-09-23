@@ -1,12 +1,20 @@
 {
   "books": [
     {
-      "id": 42,
+      "id": 257,
       "genre": "rrr",
       "author": "rrr",
       "publish_date": "09-03-2000",
       "publisher": "rrrr",
       "cover_state": "rrr"
+    },
+    {
+      "id": 545,
+      "genre": "dddd",
+      "author": "yuh",
+      "publish_date": "09-06-2023",
+      "publisher": "ddddd",
+      "cover_state": "dddds"
     }
   ],
   "labels": [
@@ -14,6 +22,11 @@
       "id": 1,
       "title": "ereee",
       "color": "rrr"
+    },
+    {
+      "id": 2,
+      "title": "sss",
+      "color": "vvv"
     }
   ]
 }

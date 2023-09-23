@@ -33,7 +33,7 @@ describe Item do
 
     it 'does not archive the item if it cannot be archived' do
       item = Item.new('action', 'martin', 'Ray_publishing', Date.parse('21-09-2019'))
-      expect { item.move_to_archive }.to output("Item cannot be archived...\n").to_stdout
+      expect { item.move_to_archive }.to output("Item cannot be archived.\n").to_stdout
       expect(item.archived).to be(false)
     end
   end

@@ -1,5 +1,3 @@
-require 'date'
-
 class Item
   attr_reader :id, :genre, :author, :label, :publish_date
   attr_accessor :archived
@@ -14,14 +12,19 @@ class Item
   end
 
   def can_be_archived?
-    publish_date < (Date.today - (10 * 365))
+    # Calculate the date 10 years ago from today
+    ten_years_ago = Date.today - (10 * 365)
+
+    # Compare the publish_date with ten_years_ago
+    publish_date < ten_years_ago
   end
 
   def move_to_archive
     if can_be_archived?
       @archived = true
+      puts 'Item has been archived.'
     else
-      puts 'Item cannot be archived...'
+      puts 'Item cannot be archived.'
     end
   end
 
@@ -35,7 +38,7 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
-  def autor=(author)
+  def author=(author)
     @author = author
     author.items.push(self) unless author.items.include?(self)
   end
