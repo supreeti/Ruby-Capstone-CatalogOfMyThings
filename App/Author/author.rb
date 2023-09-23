@@ -4,6 +4,7 @@ class Author
   attr_accessor :id, :firstname, :lastname, :items
 
   def initialize(firstname, lastname)
+    @id = id
     @firstname = firstname
     @lastname = lastname
     @items = []
@@ -12,6 +13,10 @@ class Author
   def add_item(item)
     @items << item
     item.author = self
+  end
+
+  def full_name
+    "#{firstname} #{lastname}"
   end
 
   def convert_to_hash
@@ -36,6 +41,11 @@ class Author
       author.id = data['id']
       author
     end
+  end
+
+  # New method to find an author by their first and last name
+  def self.find_author_by_name(firstname, lastname)
+    load_authors_data.find { |author| author.firstname == firstname && author.lastname == lastname }
   end
 
   def self.list_all_authors
