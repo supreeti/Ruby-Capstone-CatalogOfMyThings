@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": 42,
+      "genre": "rrr",
+      "author": "rrr",
+      "publish_date": "09-03-2000",
+      "publisher": "rrrr",
+      "cover_state": "rrr"
+    }
+  ],
+  "labels": [
+    {
+      "id": 1,
+      "title": "ereee",
+      "color": "rrr"
+    }
+  ]
+}
