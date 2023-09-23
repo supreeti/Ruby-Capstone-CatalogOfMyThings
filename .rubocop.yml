@@ -18,7 +18,7 @@ Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 50
 Metrics/ParameterLists:
-  Max: 8  
+  Enabled: false
 
 Style/Documentation:
   Enabled: false

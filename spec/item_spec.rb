@@ -7,6 +7,7 @@ require 'date'
 # Define mock classes for associations
 class Genre
   attr_accessor :items
+
   def initialize
     @items = []
   end
@@ -14,6 +15,7 @@ end
 
 class Label
   attr_accessor :items
+
   def initialize
     @items = []
   end
@@ -21,6 +23,7 @@ end
 
 class Author
   attr_accessor :items
+
   def initialize
     @items = []
   end
@@ -57,7 +60,7 @@ describe Item do
 
     it 'does not archive the item if it cannot be archived' do
       item.instance_variable_set(:@publish_date, Date.today - (9 * 365))
-      expect { item.move_to_archive }.not_to change { item.archived }
+      expect { item.move_to_archive }.not_to(change { item.archived })
     end
   end
 
