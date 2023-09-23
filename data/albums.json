@@ -1,11 +1,11 @@
 [
   {
-    "id": 591,
+    "id": 432,
     "title": "Test Album",
     "artist": "Test Artist",
     "release_date": "2023-09-21",
     "on_spotify": true,
-    "genre_id": 733,
+    "genre_id": 418,
     "genre_name": "Test Genre",
     "archived": true
   }

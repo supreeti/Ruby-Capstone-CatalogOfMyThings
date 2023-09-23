@@ -1,4 +1,5 @@
 require_relative '../App/Book/book'
+require 'date' # Add this line to require the 'date' library
 
 describe Book do
   let(:book) { Book.new('action', 'martin', 'good', Date.parse('21-09-2023'), 'Mad Man', 'good') }

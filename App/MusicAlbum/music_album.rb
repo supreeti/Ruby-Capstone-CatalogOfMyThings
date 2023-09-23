@@ -1,8 +1,9 @@
 require 'json'
 require 'set'
 require_relative '../Genre/genre'
+require_relative '../Item/item'
 
-class MusicAlbum
+class MusicAlbum < Item
   attr_accessor :title, :artist, :release_date, :on_spotify, :genre_id, :archived
   attr_reader :id
 
@@ -10,6 +11,7 @@ class MusicAlbum
   @@unique_genres = Set.new
 
   def initialize(title, artist, release_date, on_spotify, genre_name, archived)
+    super()
     @title = title
     @artist = artist
     @release_date = release_date
