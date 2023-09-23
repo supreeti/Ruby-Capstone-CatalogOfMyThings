@@ -1,5 +1,5 @@
 require 'json'
-require_relative 'App/Game/game'
+require_relative 'App/Game/game_author'
 require_relative 'App/Author/author'
 require_relative 'App/Item/item'
 require_relative 'App/MusicAlbum/music_album'
@@ -8,6 +8,7 @@ require_relative 'App/Book/book_label'
 MusicAlbum.load_albums_from_json
 
 book_label = BookLabel.new
+game_author = GameAuthor.new
 
 loop do
   puts "\nOptions:"
@@ -31,20 +32,20 @@ loop do
   when 2
     MusicAlbum.list_albums
   when 3
-    Game.list_all_games
+    game_author.list_games
   when 4
     MusicAlbum.list_genres
   when 5
     book_label.list_labels
   when 6
-    Author.list_all_authors
+    game_author.list_authors
   when 7
     book_label.add_book
   when 8
     add_album
     MusicAlbum.save_albums_to_json
   when 9
-    Game.add_a_game
+    game_author.add_game
   when 10
     puts 'Goodbye!'
     break
