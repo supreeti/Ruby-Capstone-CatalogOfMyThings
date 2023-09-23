@@ -24,4 +24,19 @@ class Item
       puts 'Item cannot be archived...'
     end
   end
+
+  def genre=(genre)
+    @genre = genre
+    genre.items.push(self) unless genre.items.include?(self)
+  end
+
+  def label=(label)
+    @label = label
+    label.items.push(self) unless label.items.include?(self)
+  end
+
+  def autor=(author)
+    @author = author
+    author.items.push(self) unless author.items.include?(self)
+  end
 end
