@@ -19,6 +19,7 @@ class MusicAlbum
     @id = generate_id
 
     @@unique_genres << genre_name
+    @items = []
   end
 
   def self.load_data_if_needed
@@ -145,6 +146,10 @@ class MusicAlbum
         puts "#{index + 1}. #{genre_name}"
       end
     end
+  end
+
+  def add_item(item)
+    @items << item
   end
 end
 

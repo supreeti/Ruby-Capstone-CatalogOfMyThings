@@ -11,6 +11,7 @@ class Item
     @publish_date = publish_date
     @author = author
     @archived = archived
+    album.add_item(self)
   end
 
   def can_be_archived?
