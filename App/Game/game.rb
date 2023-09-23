@@ -8,16 +8,17 @@ class Game < Item
   attr_reader :id
 
   def initialize(id, author, genre, label, publish_date, multiplayer, last_played_at)
-    super(genre, author, label, publish_date)  # Use author's full name
+    super(genre, author, label, publish_date) # Use author's full name
     @id = id || Random.rand(1..100)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
     @publish_date = publish_date
-    @author = author  # Set the author object directly
+    @author = author # Set the author object directly
   end
 
   def can_be_archived?
     return (Date.today - Date.parse(last_played_at)).to_i > 730 if super
+
     false
   end
 
@@ -65,7 +66,7 @@ class Game < Item
     loaded_games = load_games_data
 
     data = update_loaded_data(game_data, loaded_games)
-    game = data[:game]
+    data[:game]
     author = data[:author]
     loaded_games = data[:loaded_games]
     loaded_authors = data[:loaded_authors]
@@ -86,7 +87,7 @@ class Game < Item
     # Create a new Game object and set its attributes
     item = Game.new(
       items.length + 1,
-      author,  # Set the author directly
+      author, # Set the author directly
       game_data[:genre],
       game_data[:label],
       game_data[:publish_date],
@@ -112,7 +113,7 @@ class Game < Item
     author = Author.new(game_data[:author_firstname], game_data[:author_lastname])
     game = Game.new(
       loaded_games.length + 1,
-      author,  # Set the author directly
+      author, # Set the author directly
       game_data[:genre],
       game_data[:label],
       game_data[:publish_date],
@@ -136,7 +137,7 @@ class Game < Item
       {
         'id' => game.id,
         'genre' => game.genre,
-        'author' => game.author.full_name,  # Assuming you want the author's full name
+        'author' => game.author.full_name, # Assuming you want the author's full name
         'label' => game.label,
         'publish_date' => Date.today,
         'multiplayer' => game.multiplayer,
@@ -149,7 +150,7 @@ class Game < Item
 
   def self.load_games_data
     game_data = []
-  
+
     if File.exist?('data/games.json') && !File.empty?('data/games.json')
       begin
         game_data = JSON.parse(File.read('data/games.json'))
@@ -159,15 +160,15 @@ class Game < Item
     else
       puts "File 'data/games.json' does not exist or is empty."
     end
-  
+
     game_data.map do |data|
       publish_date = data['publish_date'] ? Date.parse(data['publish_date']) : Date.today
-      author_name = data['author']  # Assuming author name is stored as a string
-      author_firstname, author_lastname = author_name.split(' ')  # Split the full name into first and last names
-      author = Author.find_author_by_name(author_firstname, author_lastname)  # Pass both names
+      author_name = data['author'] # Assuming author name is stored as a string
+      author_firstname, author_lastname = author_name.split # Split the full name into first and last names
+      author = Author.find_author_by_name(author_firstname, author_lastname) # Pass both names
       game = Game.new(
         data['id'],
-        author,  # Set the author directly
+        author, # Set the author directly
         data['genre'],
         data['label'],
         publish_date,
@@ -176,7 +177,7 @@ class Game < Item
       )
       game
     end
-  end  
+  end
 
   def self.list_all_games
     game_data = load_games_data

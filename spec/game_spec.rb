@@ -16,13 +16,17 @@ RSpec.describe Game do
     it 'sets the last_played_at attribute' do
       expect(game.last_played_at).to eq('2023-07-01')
     end
+
+    it 'sets the publish_date attribute' do
+      expect(game.publish_date).to eq('2023-07-01')
+    end
   end
 
   describe '.load_games_data' do
     it 'loads game data from the file' do
-      expect(File).to receive(:exist?).with('games.json').and_return(true)
-      expect(File).to receive(:empty?).with('games.json').and_return(false)
-      expect(File).to receive(:read).with('games.json').and_return('[]')
+      expect(File).to receive(:exist?).with('data/games.json').and_return(true)
+      expect(File).to receive(:empty?).with('data/games.json').and_return(false)
+      expect(File).to receive(:read).with('data/games.json').and_return('[]')
 
       games = Game.load_games_data
 
