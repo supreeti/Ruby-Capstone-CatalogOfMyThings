@@ -2,7 +2,7 @@ class Item
   attr_reader :id, :genre, :author, :label, :publish_date
   attr_accessor :archived
 
-  def initialize(genre, author, label, publish_date)
+  def initialize(name = "", description = "", location = "", condition = "")
     @id = Random.rand(1..1000)
     @genre = genre
     @author = author
@@ -12,10 +12,7 @@ class Item
   end
 
   def can_be_archived?
-    # Calculate the date 10 years ago from today
     ten_years_ago = Date.today - (10 * 365)
-
-    # Compare the publish_date with ten_years_ago
     publish_date < ten_years_ago
   end
 
