@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": 67,
+      "genre": "local",
+      "author": "jk",
+      "publish_date": "12-12-2022",
+      "publisher": "jj",
+      "cover_state": "red"
+    }
+  ],
+  "labels": [
+    {
+      "id": 1,
+      "title": "program",
+      "color": "red"
+    }
+  ]
+}
